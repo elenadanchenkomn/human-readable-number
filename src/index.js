@@ -1,29 +1,24 @@
 module.exports = function toReadable (number) {
-  const units =  ['zero','one','two','three','four', 'five','six','seven','eight','nine' , 'ten','eleven','twelve','thirteen', 'fourteen','fifteen','sixteen', 'seventeen','eighteen','nineteen'];
+  const units =  ['one','two','three','four', 'five','six','seven','eight','nine' , 'ten','eleven','twelve','thirteen', 'fourteen','fifteen','sixteen', 'seventeen','eighteen','nineteen','twenty'];
   const dozens =  ['twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety'];
-  const hundred = 'hundred';
-  let numbToStr = number.toString();
-  let numbLength = numbToStr.Length;
+  const hundred = ' hundred';
   
-  let str = ' ';
-  let newStr = str.split('');
- if (number < 20) {
+  let str = '';
+  
+ 
+ if (number <= 20) {
     str = units[number];
+    return str; 
+ } else {
 
+ if (20 < number < 100) {
+    number = number.toString();
+    str = dozens[number.charAt(0)];
+    str += units[number.charAt(1)];
+    return str;
  }
-      return str; 
-      
+   
 
-  if(numbLength === 3) {
-  str = units[parseInt(numbToStr.charAt(0))] + hundred;
-  str += dozens[parseInt(numbToStr.charAt(1))];
-  str += units[parseInt(numbToStr.charAt(2))];
-} else {
-str += units[parseInt(numbToStr.charAt(1))];
-str += dozens[parseInt(numbToStr.charAt(0))]; }
+ } 
 
- return newStr
-
-    
-  
 }
